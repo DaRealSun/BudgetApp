@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Transaction</title>
+    <!-- include any other head tags needed -->
+</head>
+<body>
+<h1>Edit Transaction</h1>
+
+<form th:object="${transaction}" th:action="@{/transaction/{id}(id=${transaction.id})}" method="post">
+    <label>Type:</label>
+    <select th:field="*{type}">
+        <option th:each="type : ${T(com.yourpackage.TransactionType).values()}" th:value="${type}" th:text="${type}"></option>
+    </select>
+    <br>
+    <label>Description:</label>
+    <input type="text" th:field="*{description}">
+    <br>
+    <label>Amount:</label>
+    <input type="text" th:field="*{amount}">
+    <br>
+    <input type="submit" value="Update">
+</form>
+
+</body>
+</html>
